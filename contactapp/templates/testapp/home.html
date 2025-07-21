@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body
+    style="
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      margin: 0;
+      padding: 20px;
+      color: #eee;
+    "
+    >
+  
+    <h1
+      style="
+        text-align: center;
+        color: #bb86fc;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+      "
+    >
+      Contact List
+    </h1>
+
+    <ul
+      style="
+        list-style: none;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0;
+        background: #1f1f1f;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(187, 134, 252, 0.3);
+      "
+    >
+      {% if contacts %} {% for contact in contacts %}
+      <li style="padding: 20px; border-bottom: 1px solid #333">
+        <strong style="font-size: 1.2em; color: #bb86fc"
+          >{{ contact.name }}</strong
+        >
+        <ul
+          style="
+            list-style: none;
+            padding-left: 0;
+            margin: 8px 0 12px 0;
+            color: #aaa;
+          "
+        >
+          <li>{{ contact.mobile }}</li>
+          <li>{{ contact.email }}</li>
+        </ul>
+        <div style="font-size: 0.9em">
+          <a
+            href="{% url 'edit_contact' contact.id %}"
+            style="
+              color: #03dac6;
+              text-decoration: none;
+              margin-right: 12px;
+              font-weight: 600;
+            "
+            onmouseover="this.style.textDecoration='underline'"
+            onmouseout="this.style.textDecoration='none'"
+            >Edit</a
+          >
+          |
+          <a
+            href="{% url 'delete_contact' contact.id %}"
+            style="
+              color: #cf6679;
+              text-decoration: none;
+              margin-left: 12px;
+              font-weight: 600;
+            "
+            onmouseover="this.style.textDecoration='underline'"
+            onmouseout="this.style.textDecoration='none'"
+            >Delete</a
+          >
+        </div>
+      </li>
+      {% endfor %} {% else %}
+      <li style="padding: 20px; text-align: center; color: #666">
+        No contacts available. Please add some.
+      </li>
+      {% endif %}
+    </ul>
+
+    <div style="text-align: center; margin-top: 30px">
+      <a
+        href="{% url 'add_contact' %}"
+        style="
+          background-color: #03dac6;
+          color: #121212;
+          padding: 12px 24px;
+          border-radius: 25px;
+          font-weight: 700;
+          text-decoration: none;
+          font-size: 1em;
+          box-shadow: 0 4px 10px rgba(3, 218, 198, 0.5);
+          transition: background-color 0.3s ease;
+        "
+      >
+        Add Contact
+      </a>
+    </div>
+    
+</body>
+</html>

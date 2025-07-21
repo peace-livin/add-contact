@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Delete Contact</title>
+  </head>
+  <body
+    style="
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    "
+  >
+    <div
+      style="
+        background: #1f1f1f;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(187, 134, 252, 0.4);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+      "
+    >
+      <h2 style="margin-bottom: 20px; color: #cf6679">Delete Contact</h2>
+
+      <p style="font-size: 1.1em; margin-bottom: 30px">
+        Are you sure you want to delete <strong>{{ contact.name }}</strong>?
+      </p>
+
+      <form method="post">
+        {% csrf_token %}
+        <button
+          type="submit"
+          style="
+            background-color: #cf6679;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1em;
+            margin-right: 15px;
+            transition: background-color 0.3s ease;
+          "
+          onmouseover="this.style.backgroundColor='#b3475f'"
+          onmouseout="this.style.backgroundColor='#cf6679'"
+        >
+          Yes, Delete
+        </button>
+
+        <a
+          href="{% url 'home' %}"
+          style="
+            color: #03dac6;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            vertical-align: middle;
+          "
+          onmouseover="this.style.textDecoration='underline'"
+          onmouseout="this.style.textDecoration='none'"
+        >
+          Cancel
+        </a>
+      </form>
+    </div>
+  </body>
+</html>

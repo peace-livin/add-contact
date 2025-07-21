@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if view.kwargs.pk %}Edit{% else %}Add{% endif %} Contact</title>
+  </head>
+  <body
+    style="
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    "
+  >
+    <div
+      style="
+        background: #1f1f1f;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(187, 134, 252, 0.4);
+        width: 100%;
+        max-width: 480px;
+      "
+    >
+      <h2
+        style="
+          margin-bottom: 25px;
+          color: #bb86fc;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+        "
+      >
+        {% if view.kwargs.pk %}Edit{% else %}Add{% endif %} Contact
+      </h2>
+
+      <form
+        method="post"
+        style="display: flex; flex-direction: column; gap: 20px"
+      >
+        {% csrf_token %}
+
+        <div style="font-size: 1em; color: #ccc">{{ form.as_p }}</div>
+
+        <button
+          type="submit"
+          style="
+            background-color: #03dac6;
+            color: #121212;
+            padding: 12px 0;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          "
+          onmouseover="this.style.backgroundColor='#00bfa5'"
+          onmouseout="this.style.backgroundColor='#03dac6'"
+        >
+          Save
+        </button>
+      </form>
+
+      <a
+        href="{% url 'home' %}"
+        style="
+          display: inline-block;
+          margin-top: 20px;
+          color: #03dac6;
+          text-decoration: none;
+          font-weight: 600;
+        "
+        onmouseover="this.style.textDecoration='underline'"
+        onmouseout="this.style.textDecoration='none'"
+      >
+        &larr; Back to Contact List
+      </a>
+    </div>
+  </body>
+</html>
